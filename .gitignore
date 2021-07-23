@@ -1,0 +1,7 @@
+*.py[cod]
+*.egg
+build
+htmlcov
+__pycache__/
+
+.envrc

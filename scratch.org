@@ -1,0 +1,26 @@
+#+TITLE: Scratch
+
+Notes
+
+- [ ] download data into folder
+  - creates a podcast info.json file and a captions vtt file for each podcast
+    video
+
+- [ ] generate markdown from data
+
+- [ ] generate static pages
+  - [ ] using Pelican
+
+- [ ] host on GitHub pages
+
+Create a CLI interface with ~download~ and ~generate~ commands
+
+want to be able to download info for an entire playlist or a specific video or
+list of videos.
+
+#+begin_src shell
+huberman-site download [VIDEO_ID]
+#+end_src
+
+* Questions
+- how to update info?
