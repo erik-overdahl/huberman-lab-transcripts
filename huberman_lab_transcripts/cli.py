@@ -6,6 +6,8 @@ from pathlib import Path
 import typer
 
 from .download import PodcastInfoDownloader
+from .extract import PodcastExtractor
+from .generate import create_markdown_file
 
 
 app = typer.Typer(name="huberman-transcripts")
@@ -15,6 +17,19 @@ def download(video_or_playlist_ids: List[str] = typer.Argument(..., help="One or
              data_dir: str = typer.Option('./data', help="Directory into which to download data")):
     downloader = PodcastInfoDownloader(Path(data_dir))
     downloader.download(video_or_playlist_ids)
+
+
+@app.command()
+def generate(video_ids: List[str] = typer.Argument(None, help="The youtube video ids for which to generate markdown files. If empty, generate files for all ids in [DATA_DIR]"),
+             data_dir: str = typer.Option('./data', help="Directory of raw video data"),
+             target_dir: str = typer.Option('./site/content/posts', help="Directory into which to place generated markdown files for static site generator")):
+    extractor = PodcastExtractor(Path(data_dir).expanduser().absolute())
+    podcasts = extractor.extract_all(video_ids)
+    target_dir = Path(target_dir).expanduser().absolute()
+    if not target_dir.exists():
+        target_dir.mkdir()
+    for pod in podcasts:
+        create_markdown_file(pod, target_dir)
 
 
 if __name__ == '__main__':

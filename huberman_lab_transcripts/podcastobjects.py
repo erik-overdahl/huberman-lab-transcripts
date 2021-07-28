@@ -19,11 +19,16 @@ class CaptionType(Enum):
 
 @dataclass
 class PodcastChapter:
+    video_id: str
     start_time: int
     end_time: int
     title: str
     _captions: List[Caption] = field(default_factory=list)
     _full_transcript: str = None
+
+    @property
+    def link(self):
+        return f'{YOUTUBE_BASE}v={self.video_id}&t={self.start_time}'
 
     @property
     def full_transcript(self):
@@ -38,12 +43,12 @@ class PodcastChapter:
 @dataclass
 class PodcastInfo:
     video_id: str
+    episode_num: int
     title: str
     date: date
     description: str
     chapters: List[PodcastChapter]
     caption_type: CaptionType
-    _link: str = None
 
     @property
     def link(self):
