@@ -8,6 +8,7 @@ authors = ["Erik Overdahl"]
 python = "^3.9"
 typer = "^0.3.2"
 youtube_dl = "^2021.6.6"
+webvtt-py = "^0.4.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
