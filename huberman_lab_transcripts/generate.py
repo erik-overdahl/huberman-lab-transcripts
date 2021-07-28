@@ -13,7 +13,13 @@ def format_md_link(text: str, link: str) -> str:
 
 
 def file_header(podcast: PodcastInfo) -> str:
-    return f'title: {podcast.title}\ndate: {podcast.date}\nslug: episode-{podcast.episode_num}\nlang: en\n\n'
+    elems = {'title': podcast.title,
+             'date': podcast.date,
+             'slug': f'episode-{podcast.episode_num}',
+             'lang': 'en',
+             'tags': ','.join(podcast.tags),
+             'author': podcast.uploader}
+    return '\n'.join([f'{key}: {value}' for key, value in elems.items()]) + '\n\n'
 
 
 def summary_paragraph(podcast: PodcastInfo) -> str:
@@ -61,6 +67,7 @@ def generate(podcast_info: PodcastInfo) -> str:
 
 
 def create_markdown_file(podcast_info: PodcastInfo, target_dir: Path) -> None:
-    file_content = generate(podcast_info)
     output_file = target_dir.absolute().joinpath(f'episode-{podcast_info.episode_num}.md')
+    print('creating ', output_file)
+    file_content = generate(podcast_info)
     output_file.write_text(file_content)

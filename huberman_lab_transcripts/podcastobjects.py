@@ -46,7 +46,9 @@ class PodcastInfo:
     episode_num: int
     title: str
     date: date
+    uploader: str
     description: str
+    tags: List[str]
     chapters: List[PodcastChapter]
     caption_type: CaptionType
 

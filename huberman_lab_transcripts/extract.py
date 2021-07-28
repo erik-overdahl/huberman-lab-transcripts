@@ -54,7 +54,9 @@ def read_podcast_info_file(info_file: Path) -> PodcastInfo:
                        episode_num = episode_num,
                        title = title,
                        date = upload_date,
+                       uploader = info_json.get('uploader'),
                        description = info_json.get('description'),
+                       tags = info_json.get('tags'),
                        chapters = chapters,
                        caption_type = caption_type)
 
@@ -153,6 +155,7 @@ class PodcastExtractor:
 
 
     def extract_info(self, video_id: str) -> PodcastInfo:
+        print('reading files for ', video_id)
         video_files = self.video_id_file_map.get(video_id)
         podcast_info = read_podcast_info_file(video_files.get('info'))
         captions = None
