@@ -24,7 +24,7 @@ def file_header(podcast: PodcastInfo) -> str:
 
 def summary_paragraph(podcast: PodcastInfo) -> str:
     summary = fill(podcast.description.split('\n')[0])
-    return f'{summary}\n\n\n'
+    return f'{summary}\n\n[TOC]\n'
 
 
 def chapter_header(chapter: PodcastChapter) -> str:
