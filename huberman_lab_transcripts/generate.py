@@ -47,6 +47,13 @@ def file_footer(podcast: PodcastInfo) -> str:
         else:
             curr_.append(x)
     groups.append(curr_)
+    for group in groups:
+        if len(group) > 1 and group[0].endswith(':'):
+            for i, text in enumerate(group[1:]):
+                group[i+1] = '* ' + text
+        elif len(group) == 1:
+            group[0] = fill(group[0])
+
     footer_elems = ['\n'.join(g) for g in groups[1:] if g[0] != 'Timestamps:']
     footer = '\n\n'.join(footer_elems)
     return f'\n\n\n{footer}\n'
