@@ -3,7 +3,7 @@
 
 AUTHOR = 'Erik Overdahl'
 SITENAME = 'Huberman Lab Podcast Transcripts'
-SITEURL = 'erik-overdahl.github.io/huberman-lab-transcripts'
+SITEURL = 'https://erik-overdahl.github.io/huberman-lab-transcripts'
 
 PATH = 'content'
 

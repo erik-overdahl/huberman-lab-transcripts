@@ -3,6 +3,10 @@ name = "huberman-lab-transcripts"
 version = "0.1.0"
 description = "Full transcripts of the Huberman Lab Podcast, pulled from YouTube"
 authors = ["Erik Overdahl"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+huberman-transcripts = "huberman_lab_transcripts.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -11,6 +15,7 @@ youtube_dl = "^2021.6.6"
 webvtt-py = "^0.4.6"
 pelican = "^4.6.0"
 Markdown = "^3.3.4"
+ghp-import = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
