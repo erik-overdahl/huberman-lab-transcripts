@@ -1,5 +1,7 @@
 # Full Transcripts of the Huberman Lab Podcast
 
+Available here: https://erik-overdahl.github.io/huberman-lab-transcripts/ 
+
 This the data for a static site containing full transcripts of the all of the
 episodes of the Huberman Lab Podcast. The text is pulled from the captions of
 the videos posted on YouTube.
